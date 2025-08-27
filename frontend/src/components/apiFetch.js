@@ -1,0 +1,64 @@
+// apiFetch.js
+import { store } from "./redux/store";
+import { removeUser } from "./redux/user.slice";
+import { toast } from "react-toastify";
+
+export async function apiFetch(url, options = {}) {
+  const state = store.getState();
+  const token = state.user?.token || localStorage.getItem("access_token");
+
+  let headers = {
+    ...(options.headers || {}),
+    Authorization: token ? `Bearer ${token}` : "",
+  };
+
+  if (!(options.body instanceof FormData)) {
+    headers["Content-Type"] = "application/json";
+  }
+
+  try {
+    let response = await fetch(url, { ...options, headers });
+
+    if (response.status === 401) {
+      const refreshResponse = await fetch("/api/token/refresh/", {
+        method: "POST",
+        credentials: "include",
+      });
+
+      if (refreshResponse.ok) {
+        const data = await refreshResponse.json();
+        const retryHeaders = {
+          ...headers,
+          Authorization: `Bearer ${data.access}`,
+        };
+        response = await fetch(url, { ...options, headers: retryHeaders });
+      } else {
+        // Refresh failed → logout
+        store.dispatch(removeUser());
+        localStorage.removeItem("access_token");
+
+        toast.error("Session expired. Please sign in again.");
+        window.location.href = "/signin";
+        return;
+      }
+    }
+
+    if (!response.ok) {
+      let errMsg = "Something went wrong";
+      try {
+        const errData = await response.json();
+        errMsg = errData.error || JSON.stringify(errData);
+      } catch {}
+
+      toast.error(errMsg);   // 🔴 Show error toast
+      throw new Error(errMsg);
+    }
+
+
+    return response;
+  } catch (err) {
+    console.error("apiFetch error:", err);
+    toast.error(err.message || "Network error"); // 🔴 Global catch toast
+    throw err;
+  }
+}
