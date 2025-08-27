@@ -19,11 +19,18 @@ export async function apiFetch(url, options = {}) {
   try {
     let response = await fetch(url, { ...options, headers });
 
-    if (response.status === 401) {
-      const refreshResponse = await fetch("/api/token/refresh/", {
-        method: "POST",
-        credentials: "include",
-      });
+ if (response.status === 401) {
+  const refreshResponse = await fetch(
+    `${import.meta.env.VITE_API_URL}/api/token/refresh/`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        refresh: localStorage.getItem("refresh_token"),
+      }),
+    }
+  );
+
 
       if (refreshResponse.ok) {
         const data = await refreshResponse.json();
