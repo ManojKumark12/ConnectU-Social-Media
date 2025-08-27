@@ -104,8 +104,6 @@ const adminid=useSelector((state)=>state.user.user.id);
       </p>
     </div>
   </div>
- {console.log(postAuthor.id)}
- {console.log(author)}
   {/* Three-dot menu for author */}
   {postAuthor.id === adminid && (
    

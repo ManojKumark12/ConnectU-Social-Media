@@ -40,15 +40,18 @@ export function Signin() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     })
-
+   const data = await response.json();
+ 
     if (response.ok) {
-      const data = await response.json()
+   
+     
       dispatch(addUser(data.data))
       localStorage.setItem("access_token", data.access_token)
       localStorage.setItem("refresh_token", data.refresh_token)
 toast.success("Login Success!!");
       navigate("/")
     } else {
+  
       toast.error("invalid credentials");
       form.setError("root", {
         type: "manual",
