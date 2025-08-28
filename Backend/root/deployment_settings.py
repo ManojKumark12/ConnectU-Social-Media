@@ -5,7 +5,8 @@ from .settings import BASE_DIR
 
 # ✅ Host & CSRF
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv(), default=[])
-CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", cast=Csv(), default=[])
+# CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", cast=Csv(), default=[])
+CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", cast=Csv(), default="")
 
 # ✅ Security
 DEBUG = config("DEBUG", default=False, cast=bool)
