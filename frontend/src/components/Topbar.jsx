@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux"
-// import logo from "@/assets/logo.png"
+import logo from "@/assets/logo.png"
 import { Link } from "react-router-dom"
 import { Button } from "./ui/button"
 import { removeUser } from "./redux/user.slice"
@@ -16,7 +16,7 @@ import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { AvatarFallback } from "@radix-ui/react-avatar"
 import { fixUrl } from "./firurl"
-import Userimage from "@/assets/logo.png"
+import Userimage from "@/assets/Userimage.png"
 export default function Topbar() {
   const loggedin = useSelector((state) => state.user.userloggedin);
   const id = useSelector((state) => state.user.user.id);
@@ -36,7 +36,7 @@ export default function Topbar() {
     <div className="w-full shadow-md bg-white">
       <div className="max-w-screen-xl mx-auto flex justify-between items-center h-16 px-4 md:px-6">
         {/* Logo */}
-        <img src={Userimage} alt="logo" className="w-28 h-28 md:w-32" />
+        <img src={logo} alt="logo" className="w-28 h-28 md:w-32" />
 
         {/* Desktop Nav */}
         <div className="hidden md:flex gap-6 text-gray-700 font-medium">
