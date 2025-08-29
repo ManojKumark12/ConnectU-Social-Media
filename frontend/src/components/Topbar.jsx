@@ -44,6 +44,7 @@ const username= useSelector((state) => state.user.user.username);
           <Link to="/addposts">Add Posts</Link>
         </div>
       {console.log("profile pic in topbar:",pic)}
+      {console.log("decoded topbar:",decodeURIComponent(pic).replace(/^\/+/, ''))}
         {/* Right Section */}
         <div className="flex items-center gap-4">
           {loggedin ? (
@@ -52,7 +53,8 @@ const username= useSelector((state) => state.user.user.username);
                 <Avatar className="cursor-pointer">
                   { pic ? (
                             <AvatarImage
-                              src={pic}
+                              src={decodeURIComponent(pic).replace(/^\/+/, '')}
+                            
                               className="object-cover"
                             />
                           ) : (
