@@ -44,7 +44,8 @@ export default function Topbar() {
           <Link to="/makefriends">Make Friends</Link>
           <Link to="/addposts">Add Posts</Link>
         </div>
- 
+        {console.log("profile pic in topbar:", pic)}
+        {console.log("decoded topbar:", fixUrl(pic))}
         {/* Right Section */}
         <div className="flex items-center gap-4">
           {loggedin ? (
@@ -57,13 +58,10 @@ export default function Topbar() {
                       className="object-cover"
                     />
                   ) : (
-                  <AvatarFallback className="bg-gray-200 flex items-center justify-center">
-      {/* Option 1: Initial */}
-      {/* <span className="text-white font-semibold">{username?.[0]?.toUpperCase()}</span> */}
-
-      {/* Option 2: Default image (optional) */}
-      <img src={Userimage} className="w-full h-full object-cover" />
-    </AvatarFallback>
+                    <AvatarImage
+                      src={Userimage}       // default image
+                      className="object-cover"
+                    />
                   )}
                 </Avatar>
 
