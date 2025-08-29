@@ -15,6 +15,7 @@ import {
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { AvatarFallback } from "@radix-ui/react-avatar"
+import { fixUrl } from "./firurl"
 
 export default function Topbar() {
   const loggedin = useSelector((state) => state.user.userloggedin);
@@ -44,7 +45,7 @@ const username= useSelector((state) => state.user.user.username);
           <Link to="/addposts">Add Posts</Link>
         </div>
       {console.log("profile pic in topbar:",pic)}
-      {console.log("decoded topbar:",decodeURIComponent(pic).replace(/^\/+/, ''))}
+      {console.log("decoded topbar:",fixUrl(pic))}
         {/* Right Section */}
         <div className="flex items-center gap-4">
           {loggedin ? (
@@ -53,7 +54,7 @@ const username= useSelector((state) => state.user.user.username);
                 <Avatar className="cursor-pointer">
                   { pic ? (
                             <AvatarImage
-                              src={decodeURIComponent(pic).replace(/^\/+/, '')}
+                              src={fixUrl(pic)}
                             
                               className="object-cover"
                             />
