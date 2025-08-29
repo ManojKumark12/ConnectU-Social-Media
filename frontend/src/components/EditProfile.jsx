@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
+import Userimage from "@/assets/logo.png"
 import {
   Form,
   FormControl,
@@ -130,7 +131,7 @@ export function EditProfile() {
             className="cursor-pointer group"
           >
             <img
-              src={preview || "https://via.placeholder.com/96"} // fallback placeholder
+              src={preview ||Userimage} // fallback placeholder
               alt="preview"
               className="w-24 h-24 rounded-full object-cover border-2 border-gray-300"
             />

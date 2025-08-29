@@ -16,13 +16,13 @@ import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { AvatarFallback } from "@radix-ui/react-avatar"
 import { fixUrl } from "./firurl"
-
+import Userimage from "@/assets/logo.png"
 export default function Topbar() {
   const loggedin = useSelector((state) => state.user.userloggedin);
   const id = useSelector((state) => state.user.user.id);
   const email = useSelector((state) => state.user.user.email);
   const pic = useSelector((state) => state.user.user.profile_photo);
-const username= useSelector((state) => state.user.user.username);
+  const username = useSelector((state) => state.user.user.username);
   const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -36,7 +36,7 @@ const username= useSelector((state) => state.user.user.username);
     <div className="w-full shadow-md bg-white">
       <div className="max-w-screen-xl mx-auto flex justify-between items-center h-16 px-4 md:px-6">
         {/* Logo */}
-        <img src={logo} alt="logo" className="w-28 h-28 md:w-32"     />
+        <img src={logo} alt="logo" className="w-28 h-28 md:w-32" />
 
         {/* Desktop Nav */}
         <div className="hidden md:flex gap-6 text-gray-700 font-medium">
@@ -44,25 +44,26 @@ const username= useSelector((state) => state.user.user.username);
           <Link to="/makefriends">Make Friends</Link>
           <Link to="/addposts">Add Posts</Link>
         </div>
-      {console.log("profile pic in topbar:",pic)}
-      {console.log("decoded topbar:",fixUrl(pic))}
+        {console.log("profile pic in topbar:", pic)}
+        {console.log("decoded topbar:", fixUrl(pic))}
         {/* Right Section */}
         <div className="flex items-center gap-4">
           {loggedin ? (
             <DropdownMenu>
               <DropdownMenuTrigger>
-               <Avatar className="w-12 h-12 cursor-pointer">
-  {pic ? (
-    <AvatarImage
-      src={fixUrl(pic)}
-      className="object-cover"
-    />
-  ) : (
-    <AvatarFallback className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white font-semibold text-lg">
-      {username[0].toUpperCase()}
-    </AvatarFallback>
-  )}
-</Avatar>
+                <Avatar className="w-12 h-12 cursor-pointer">
+                  {pic ? (
+                    <AvatarImage
+                      src={fixUrl(pic)}
+                      className="object-cover"
+                    />
+                  ) : (
+                    <AvatarImage
+                      src={Userimage}
+                      className="object-cover"
+                    />
+                  )}
+                </Avatar>
 
               </DropdownMenuTrigger>
               <DropdownMenuContent>

@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { apiFetch } from "./apiFetch";
 import { toast } from "react-toastify";
+import { fixUrl } from "./firurl";
 export default function Connections() {
     const { type, id } = useParams(); // followers | following
     const [users, setUsers] = useState([]);
@@ -95,10 +96,7 @@ export default function Connections() {
                                         <AvatarImage
                                             src={
                                                 user.profile_photo
-                                                    ? decodeURIComponent(user.profile_photo).replace(
-                                                          "http://127.0.0.1:8000/",
-                                                          ""
-                                                      )
+                                                    ? fixUrl(user.profile_photo)
                                                     : "https://via.placeholder.com/50"
                                             }
                                             className="object-cover"
