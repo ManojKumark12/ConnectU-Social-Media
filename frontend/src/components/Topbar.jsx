@@ -52,7 +52,7 @@ const username= useSelector((state) => state.user.user.username);
                 <Avatar className="cursor-pointer">
                   { pic ? (
                             <AvatarImage
-                              src={decodeURIComponent(pic).replace(/^\//, "")}
+                              src={pic}
                               className="object-cover"
                             />
                           ) : (
