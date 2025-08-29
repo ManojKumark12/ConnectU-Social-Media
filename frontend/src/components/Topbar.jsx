@@ -52,15 +52,13 @@ export default function Topbar() {
             <DropdownMenu>
               <DropdownMenuTrigger>
                 <Avatar className="w-12 h-12 cursor-pointer">
-                  {pic ? <AvatarImage
-                    src={fixUrl(pic)}
-                    className="object-cover"
-                  /> : <AvatarFallback className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white font-semibold text-lg">
-                    {username[0].toUpperCase()}
-                  </AvatarFallback>}
-
-
-
+              
+                    <AvatarImage
+                      src={pic?fixUrl(pic):Userimage}
+                      className="object-cover"
+                    />
+                
+                  
                 </Avatar>
 
               </DropdownMenuTrigger>
