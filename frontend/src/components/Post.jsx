@@ -81,6 +81,7 @@ const adminid=useSelector((state)=>state.user.user.id);
   <div className="flex items-center gap-4">
     <div className="relative">
       <Avatar className="w-14 h-14 ring-2 ring-gray-200 transition-all duration-300">
+        {console.log(postAuthor.profile_photo)}
         {postAuthor.profile_photo ? (
           <AvatarImage
             src={decodeURIComponent(
