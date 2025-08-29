@@ -85,7 +85,7 @@ const adminid=useSelector((state)=>state.user.user.id);
         {postAuthor.profile_photo ? (
           <AvatarImage
             src={decodeURIComponent(
-              postAuthor.profile_photo.replace("http://127.0.0.1:8000/", "")
+              postAuthor.profile_photo
             )}
             className="object-cover"
           />
@@ -167,7 +167,7 @@ const adminid=useSelector((state)=>state.user.user.id);
         <CardContent className="px-6 pb-4">
           <div className="relative overflow-hidden rounded-2xl bg-gray-100">
             <img
-              src={decodeURIComponent(feed.image.replace("http://127.0.0.1:8000/", ""))}
+              src={decodeURIComponent(feed.image)}
               alt={feed.caption || "Feed image"}
               className="w-full max-h-[500px] object-cover transition-all duration-700"
               loading="lazy"
@@ -235,10 +235,7 @@ const adminid=useSelector((state)=>state.user.user.id);
                   <Avatar className="w-8 h-8">
 
                     {c.user.profile_photo ? (
-                      <AvatarImage src={decodeURIComponent(c.user.profile_photo).replace(
-                            /^\//,
-                            ""
-                        )} />
+                      <AvatarImage src={decodeURIComponent(c.user.profile_photo)} />
                     ) : (
                       <AvatarFallback>
                         {c.user.username[0].toUpperCase()}
