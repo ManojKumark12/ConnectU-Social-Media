@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
+import { AvatarFallback } from "@radix-ui/react-avatar"
 
 export default function Topbar() {
   const loggedin = useSelector((state) => state.user.userloggedin);
