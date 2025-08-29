@@ -159,13 +159,13 @@ const adminid=useSelector((state)=>state.user.user.id);
           </p>
         </div>
       )}
-{console.log("feed image",decodeURIComponent(feed.image).replace(/^\/+/, '').replace(`${import.meta.env.VITE_API_URL}`,''))}
+{console.log("feed image",decodeURIComponent(feed.image).replace(/^\/+/, '').replace("https://connectu-social-media-jhi7.onrender.com/",''))}
       {/* Image */}
       {feed.image && (
         <CardContent className="px-6 pb-4">
           <div className="relative overflow-hidden rounded-2xl bg-gray-100">
             <img
-               src={decodeURIComponent(feed.image).replace(/^\/+/, '').replace(`${import.meta.env.VITE_API_URL}`,'')}
+               src={decodeURIComponent(feed.image).replace(/^\/+/, '').replace("https://connectu-social-media-jhi7.onrender.com/",'')}
               alt={feed.caption || "Feed image"}
               className="w-full max-h-[500px] object-cover transition-all duration-700"
               loading="lazy"
