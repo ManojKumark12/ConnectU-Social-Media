@@ -51,19 +51,19 @@ const username= useSelector((state) => state.user.user.username);
           {loggedin ? (
             <DropdownMenu>
               <DropdownMenuTrigger>
-                <Avatar className="cursor-pointer">
-                  { pic ? (
-                            <AvatarImage
-                              src={fixUrl(pic)}
-                            
-                              className="object-cover"
-                            />
-                          ) : (
-                            <AvatarFallback className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white font-semibold text-lg">
-                              {username[0].toUpperCase()}
-                            </AvatarFallback>
-                          )}
-                </Avatar>
+               <Avatar className="w-12 h-12 cursor-pointer">
+  {pic ? (
+    <AvatarImage
+      src={fixUrl(pic)}
+      className="object-cover"
+    />
+  ) : (
+    <AvatarFallback className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white font-semibold text-lg">
+      {username[0].toUpperCase()}
+    </AvatarFallback>
+  )}
+</Avatar>
+
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuLabel>{email}</DropdownMenuLabel>
