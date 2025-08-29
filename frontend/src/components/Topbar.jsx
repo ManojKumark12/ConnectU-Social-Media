@@ -43,7 +43,7 @@ const username= useSelector((state) => state.user.user.username);
           <Link to="/makefriends">Make Friends</Link>
           <Link to="/addposts">Add Posts</Link>
         </div>
-{console.log(pic)}
+      {console.log("profile pic in topbar:",pic)}
         {/* Right Section */}
         <div className="flex items-center gap-4">
           {loggedin ? (
