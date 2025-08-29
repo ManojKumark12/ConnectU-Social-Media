@@ -3,7 +3,7 @@ import logo from "@/assets/logo.png"
 import { Link } from "react-router-dom"
 import { Button } from "./ui/button"
 import { removeUser } from "./redux/user.slice"
-import { Avatar, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarImage ,AvatarFallback} from "@/components/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
-import { AvatarFallback } from "@radix-ui/react-avatar"
 import { fixUrl } from "./firurl"
 import Userimage from "@/assets/Userimage.png"
 export default function Topbar() {
@@ -51,13 +50,13 @@ export default function Topbar() {
           {loggedin ? (
             <DropdownMenu>
               <DropdownMenuTrigger>
-                <Avatar className="w-16 h-16 cursor-pointer"> {/* Increase size from w-12 h-12 to w-16 h-16 */}
+                <Avatar className="w-12 h-12 cursor-pointer"> {/* Increase size from w-12 h-12 to w-16 h-16 */}
                   {pic ? <AvatarImage
                     src={fixUrl(pic)}
                     className="object-cover"
                   /> :
-                    <AvatarFallback className="bg-gradient-to-br from-blue-100 to-purple-100 text-blue-700 font-semibold text-xl"> {/* Adjust text size */}
-                      {username[0].toUpperCase()}
+                      <AvatarFallback className="bg-gradient-to-br from-blue-100 to-purple-100 text-blue-700 font-semibold text-xl">
+                      {username && username[0] ? username[0].toUpperCase() : 'U'}
                     </AvatarFallback>
                   }
                 </Avatar>
