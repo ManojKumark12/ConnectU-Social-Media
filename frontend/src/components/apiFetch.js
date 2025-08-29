@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 export async function apiFetch(url, options = {}) {
   const state = store.getState();
-  const dispatch = useDispatch();
+
   const token = state.user?.token || localStorage.getItem("access_token");
 
   let headers = {
@@ -60,7 +60,7 @@ export async function apiFetch(url, options = {}) {
       } catch {}
 
       toast.error(errMsg); 
-         dispatch(removeUser());
+         store.dispatch(removeUser());
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
        window.location.href = "/signin";  // 🔴 Show error toast
@@ -71,7 +71,7 @@ export async function apiFetch(url, options = {}) {
     return response;
   } catch (err) {
     console.error("apiFetch error:", err);
-             dispatch(removeUser());
+             store.dispatch(removeUser());
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
     toast.error(err.message || "Network error"); // 🔴 Global catch toast

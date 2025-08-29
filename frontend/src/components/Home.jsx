@@ -22,7 +22,8 @@ export default function Home() {
       });
       try {
         const data = await result.json();
-        setFeeds(data.data || []);
+        setFeeds(Array.isArray(data?.data) ? data.data : []);
+
       } catch (err) {
         toast.error("Failed to fetch feeds:", err);
         setFeeds([]);
