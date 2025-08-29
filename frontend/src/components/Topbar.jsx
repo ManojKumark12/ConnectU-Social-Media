@@ -51,14 +51,15 @@ export default function Topbar() {
           {loggedin ? (
             <DropdownMenu>
               <DropdownMenuTrigger>
-                <Avatar className="w-12 h-12 cursor-pointer">
-              
-                    <AvatarImage
-                      src={pic?fixUrl(pic):Userimage}
-                      className="object-cover"
-                    />
-                
-                  
+                <Avatar className="w-16 h-16 cursor-pointer"> {/* Increase size from w-12 h-12 to w-16 h-16 */}
+                  {pic ? <AvatarImage
+                    src={fixUrl(pic)}
+                    className="object-cover"
+                  /> :
+                    <AvatarFallback className="bg-gradient-to-br from-blue-100 to-purple-100 text-blue-700 font-semibold text-xl"> {/* Adjust text size */}
+                      {username[0].toUpperCase()}
+                    </AvatarFallback>
+                  }
                 </Avatar>
 
               </DropdownMenuTrigger>
