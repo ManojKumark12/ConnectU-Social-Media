@@ -57,10 +57,13 @@ export default function Topbar() {
                       className="object-cover"
                     />
                   ) : (
-                    <AvatarImage
-                      src={Userimage}
-                      className="object-cover"
-                    />
+                  <AvatarFallback className="bg-gray-200 flex items-center justify-center">
+      {/* Option 1: Initial */}
+      <span className="text-white font-semibold">{username?.[0]?.toUpperCase()}</span>
+
+      {/* Option 2: Default image (optional) */}
+      {/* <img src={Userimage} alt="default profile" className="w-full h-full object-cover" /> */}
+    </AvatarFallback>
                   )}
                 </Avatar>
 
