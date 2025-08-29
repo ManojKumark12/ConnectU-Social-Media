@@ -44,8 +44,7 @@ export default function Topbar() {
           <Link to="/makefriends">Make Friends</Link>
           <Link to="/addposts">Add Posts</Link>
         </div>
-        {console.log("profile pic in topbar:", pic)}
-        {console.log("decoded topbar:", fixUrl(pic))}
+ 
         {/* Right Section */}
         <div className="flex items-center gap-4">
           {loggedin ? (
