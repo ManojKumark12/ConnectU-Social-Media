@@ -49,13 +49,16 @@ export default function Topbar() {
             <DropdownMenu>
               <DropdownMenuTrigger>
                 <Avatar className="cursor-pointer">
-                  <AvatarImage
-                    src={
-                      pic
-                        ? decodeURIComponent(pic).replace(/^\//, "")
-                        : "https://github.com/shadcn.png"
-                    }
-                  />
+                  { pic ? (
+                            <AvatarImage
+                              src={decodeURIComponent(pic).replace(/^\//, "")}
+                              className="object-cover"
+                            />
+                          ) : (
+                            <AvatarFallback className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white font-semibold text-lg">
+                              {username[0].toUpperCase()}
+                            </AvatarFallback>
+                          )}
                 </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
