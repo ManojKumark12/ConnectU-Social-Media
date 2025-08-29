@@ -52,17 +52,13 @@ export default function Topbar() {
             <DropdownMenu>
               <DropdownMenuTrigger>
                 <Avatar className="w-12 h-12 cursor-pointer">
-                  {pic ? (
+              
                     <AvatarImage
-                      src={fixUrl(pic)}
+                      src={pic?fixUrl(pic):Userimage}
                       className="object-cover"
                     />
-                  ) : (
-                    <AvatarImage
-                      src={Userimage}       // default image
-                      className="object-cover"
-                    />
-                  )}
+                
+                  
                 </Avatar>
 
               </DropdownMenuTrigger>
