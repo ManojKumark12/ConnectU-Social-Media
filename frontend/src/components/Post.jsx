@@ -58,10 +58,10 @@ const adminid=useSelector((state)=>state.user.user.id);
         setComments([data.data, ...comments]);
         setNewComment("");
       } else {
-        console.error("Failed to add comment:", data);
+        toast.error("Failed to add comment:", data);
       }
     } catch (err) {
-      console.error("Error adding comment:", err);
+      toast.error("Error adding comment:", err);
     }
 
 
@@ -82,7 +82,7 @@ const adminid=useSelector((state)=>state.user.user.id);
   <div className="flex items-center gap-4">
     <div className="relative">
       <Avatar className="w-14 h-14 ring-2 ring-gray-200 transition-all duration-300">
-        {console.log("profile pic in post:",postAuthor.profile_photo)}
+        
         {postAuthor.profile_photo ? (
           <AvatarImage
             src={fixUrl(postAuthor.profile_photo)}

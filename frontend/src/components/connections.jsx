@@ -12,11 +12,12 @@ import { useParams, Link } from "react-router-dom";
 import { apiFetch } from "./apiFetch";
 import { toast } from "react-toastify";
 import { fixUrl } from "./firurl";
+import { useSelector } from "react-redux";
 export default function Connections() {
     const { type, id } = useParams(); // followers | following
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
-
+const userid=useSelector((state)=>state.user.user.id);
     const fetchConnections = async () => {
         try {
             const token = localStorage.getItem("access_token");
@@ -135,7 +136,7 @@ export default function Connections() {
                                         </div>
                                     </div>
                                 </div>
-
+{userid!=user.id && 
                                 <CardFooter className="flex justify-end p-4 gap-2">
                                     <Button
                                         className={`px-4 py-2 font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50 ${user.is_following
@@ -149,6 +150,7 @@ export default function Connections() {
                                         </span>
                                     </Button>
                                 </CardFooter>
+}
                             </Card>
                         ))
                     ) : (
