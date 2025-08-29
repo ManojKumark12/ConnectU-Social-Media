@@ -21,7 +21,7 @@ export default function Topbar() {
   const id = useSelector((state) => state.user.user.id);
   const email = useSelector((state) => state.user.user.email);
   const pic = useSelector((state) => state.user.user.profile_photo);
-
+const username= useSelector((state) => state.user.user.username);
   const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
 
