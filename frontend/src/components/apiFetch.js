@@ -1,10 +1,12 @@
 // apiFetch.js
+import { useDispatch } from "react-redux";
 import { store } from "./redux/store";
 import { removeUser } from "./redux/user.slice";
 import { toast } from "react-toastify";
 
 export async function apiFetch(url, options = {}) {
   const state = store.getState();
+  const dispatch = useDispatch();
   const token = state.user?.token || localStorage.getItem("access_token");
 
   let headers = {
@@ -57,15 +59,23 @@ export async function apiFetch(url, options = {}) {
         errMsg = errData.error || JSON.stringify(errData);
       } catch {}
 
-      toast.error(errMsg);   // 🔴 Show error toast
-      throw new Error(errMsg);
+      toast.error(errMsg); 
+         dispatch(removeUser());
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+       window.location.href = "/signin";  // 🔴 Show error toast
+      // throw new Error(errMsg);
     }
 
 
     return response;
   } catch (err) {
     console.error("apiFetch error:", err);
+             dispatch(removeUser());
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
     toast.error(err.message || "Network error"); // 🔴 Global catch toast
-    throw err;
+    window.location.href = "/signin"; 
+  
   }
 }
