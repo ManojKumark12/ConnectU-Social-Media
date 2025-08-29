@@ -53,12 +53,12 @@ export default function Connections() {
                 prev.map((user) =>
                     user.id === userId
                         ? {
-                              ...user,
-                              is_following: !user.is_following,
-                              no_of_followers: user.is_following
-                                  ? user.no_of_followers - 1
-                                  : user.no_of_followers + 1,
-                          }
+                            ...user,
+                            is_following: !user.is_following,
+                            no_of_followers: user.is_following
+                                ? user.no_of_followers - 1
+                                : user.no_of_followers + 1,
+                        }
                         : user
                 )
             );
@@ -93,17 +93,17 @@ export default function Connections() {
                             >
                                 <CardHeader className="flex flex-row items-center gap-4 p-4">
                                     <Avatar className="relative w-16 h-16 border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
-                                        <AvatarImage
-                                            src={
-                                                user.profile_photo
-                                                    ? fixUrl(user.profile_photo)
-                                                    : "https://via.placeholder.com/50"
-                                            }
-                                            className="object-cover"
-                                        />
-                                        <AvatarFallback className="bg-gradient-to-br from-blue-100 to-purple-100 text-blue-700 font-semibold text-lg">
-                                            {user.username[0].toUpperCase()}
-                                        </AvatarFallback>
+                                        {user.profile_photo
+                                            ? <AvatarImage
+                                                src={
+                                                    fixUrl(user.profile_photo)
+
+                                                }
+                                                className="object-cover"
+                                            /> :
+                                            <AvatarFallback className="bg-gradient-to-br from-blue-100 to-purple-100 text-blue-700 font-semibold text-lg">
+                                                {user.username[0].toUpperCase()}
+                                            </AvatarFallback>}
                                     </Avatar>
                                     <div className="flex-1">
                                         <CardTitle className="text-xl font-semibold text-gray-800 mb-2 truncate hover:text-blue-600 transition-all duration-300">
@@ -138,11 +138,10 @@ export default function Connections() {
 
                                 <CardFooter className="flex justify-end p-4 gap-2">
                                     <Button
-                                        className={`px-4 py-2 font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50 ${
-                                            user.is_following
+                                        className={`px-4 py-2 font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50 ${user.is_following
                                                 ? "bg-gray-300 text-gray-700 hover:bg-gray-400"
                                                 : "bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 shadow-lg hover:shadow-xl"
-                                        }`}
+                                            }`}
                                         onClick={() => handleFollowToggle(user.id)}
                                     >
                                         <span className="flex items-center gap-2">

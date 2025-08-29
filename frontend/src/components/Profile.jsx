@@ -7,6 +7,7 @@ import dayjs from "dayjs"
 import relativeTime from "dayjs/plugin/relativeTime"
 import { apiFetch } from "./apiFetch";
 import { Post } from "./Post";
+import { fixUrl } from "./firurl";
 dayjs.extend(relativeTime)
 export const Profile = () => {
 const adminid=useSelector((state)=>state.user.user.id);
@@ -122,7 +123,7 @@ const adminid=useSelector((state)=>state.user.user.id);
                 {userProfile.profile_photo ? (
                   <img
                     
-                       src={decodeURIComponent(userProfile.profile_photo.replace("http://127.0.0.1:8000/", ""))} 
+                       src={fixUrl(userProfile.profile_photo)} 
                     alt={userProfile.username}
                     className="w-full h-full rounded-full object-cover bg-white"
                   />

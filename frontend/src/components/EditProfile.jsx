@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import Userimage from "@/assets/logo.png"
+import Userimage from "@/assets/Userimage.png"
 import {
   Form,
   FormControl,

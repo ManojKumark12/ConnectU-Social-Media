@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import logo from "@/assets/logo.png";
 import { Link } from "react-router-dom";
 import { apiFetch } from "./apiFetch";
+import { fixUrl } from "./firurl";
 export default function Makefriends() {
     const [otherusers, setOtherUsers] = useState([]);
 
@@ -130,13 +131,15 @@ export default function Makefriends() {
                                                 <div className="w-16 h-16 bg-white rounded-full"></div>
                                             </div>
                                             <Avatar className="relative w-16 h-16 border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
-                                                <AvatarImage
-                                                    src={decodeURIComponent(user.profile_photo).replace("http://127.0.0.1:8000/", "")}
+                                              {user.profile_photo? <AvatarImage
+                                                    src={fixUrl(user.profile_photo)}
                                                     className="object-cover"
                                                 />
+                                                :
                                                 <AvatarFallback className="bg-gradient-to-br from-blue-100 to-purple-100 text-blue-700 font-semibold text-lg">
                                                     {user.username[0].toUpperCase()}
                                                 </AvatarFallback>
+}
                                             </Avatar>
                                             {/* Online Status Indicator */}
                                             <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-400 rounded-full border-3 border-white shadow-sm"></div>

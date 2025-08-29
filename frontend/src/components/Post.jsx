@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import { Menu } from "@headlessui/react"; // optional, or you can implement custom dropdown
 import { MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
+import { fixUrl } from "./firurl";
 
 dayjs.extend(relativeTime);
 
@@ -84,7 +85,7 @@ const adminid=useSelector((state)=>state.user.user.id);
         {console.log("profile pic in post:",postAuthor.profile_photo)}
         {postAuthor.profile_photo ? (
           <AvatarImage
-            src={postAuthor.profile_photo}
+            src={fixUrl(postAuthor.profile_photo)}
             className="object-cover"
           />
         ) : (
@@ -165,7 +166,7 @@ const adminid=useSelector((state)=>state.user.user.id);
         <CardContent className="px-6 pb-4">
           <div className="relative overflow-hidden rounded-2xl bg-gray-100">
             <img
-               src={decodeURIComponent(feed.image).replace(/^\/+/, '').replace("https://connectu-social-media-jhi7.onrender.com/",'')}
+               src={fixUrl(feed.image)}
               alt={feed.caption || "Feed image"}
               className="w-full max-h-[500px] object-cover transition-all duration-700"
               loading="lazy"
@@ -233,7 +234,7 @@ const adminid=useSelector((state)=>state.user.user.id);
                   <Avatar className="w-8 h-8">
 
                     {c.user.profile_photo ? (
-                      <AvatarImage src={c.user.profile_photo} />
+                      <AvatarImage src={fixUrl(c.user.profile_photo)} />
                     ) : (
                       <AvatarFallback>
                         {c.user.username[0].toUpperCase()}
