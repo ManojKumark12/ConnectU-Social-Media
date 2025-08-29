@@ -7,12 +7,12 @@ export const News = () => {
   const fetchNews = async () => {
     try {
       const response = await fetch(
-        `https://newsapi.org/v2/top-headlines?country=us&apiKey=4abb2676cb6c4941b4a4d7ae1f073dda`
+        `https://gnews.io/api/v4/top-headlines?category=general&apikey=1e1ebf84639b264d5e2aae5808019c20`
       );
       const data = await response.json();
 
-      // Check if the articles array exists in the response
-      if (data.articles && Array.isArray(data.articles)) {
+      // Check if the data array exists in the response
+      if (data && Array.isArray(data.articles)) {
         setNewsItems(data.articles); // store articles in state
       } else {
         toast.error("No news articles found.");
@@ -39,9 +39,9 @@ export const News = () => {
               rel="noopener noreferrer"
               className="flex flex-col border p-2 rounded-lg hover:bg-gray-100 transition"
             >
-              {item.urlToImage && (
+              {item.image && (
                 <img
-                  src={item.urlToImage}
+                  src={item.image}
                   alt={item.title}
                   className="w-full h-32 object-cover rounded-md mb-2"
                 />
